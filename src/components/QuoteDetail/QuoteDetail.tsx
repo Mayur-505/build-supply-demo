@@ -1,6 +1,6 @@
-import copyIcon from "@/assets/copy.svg"
-import editIcon from "@/assets/editIcon.svg"
-import fileIcon from "@/assets/file.svg"
+import copyIcon from "@/assets/copy.png"
+import editIcon from "@/assets/editIcon.png"
+import fileIcon from "@/assets/file.png"
 import { QuoteDetailTable } from "../QuoteDetailTable"
 import { Button } from "../ui/button"
 

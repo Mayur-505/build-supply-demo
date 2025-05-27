@@ -1,7 +1,7 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
 import { useNavigate } from "react-router"
-import plusIcon from "../assets/addPrimaryIcon.svg"
-import dropdownIcon from "../assets/dropdownIcon.svg"
+import plusIcon from "../assets/addPrimaryIcon.png"
+import dropdownIcon from "../assets/dropdownIcon.png"
 import { Button } from "./ui/button"
 
 const QuoteDropdown = () => {

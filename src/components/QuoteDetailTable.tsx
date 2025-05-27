@@ -1,16 +1,16 @@
 "use client"
 
 import {
-	type ColumnDef
+    type ColumnDef
 } from "@tanstack/react-table";
 
-import deleteIcon from "@/assets/deleteIcon.svg";
-import editIcon from "@/assets/editIcon.svg";
-import edit2Icon from "@/assets/editIcon2.svg";
-import minus from "@/assets/minus.svg";
-import percentIcon from "@/assets/percentage.svg";
-import plus from "@/assets/plus.svg";
-import starIcon from "@/assets/star.svg";
+import deleteIcon from "@/assets/deleteIcon.png";
+import editIcon from "@/assets/editIcon.png";
+import edit2Icon from "@/assets/editIcon2.png";
+import minus from "@/assets/minus.png";
+import percentIcon from "@/assets/percentage.png";
+import plus from "@/assets/plus.png";
+import starIcon from "@/assets/star.png";
 import { DataTable } from "./common/DataTable";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
