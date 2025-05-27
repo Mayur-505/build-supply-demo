@@ -1,6 +1,6 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
-import plusIcon from "../assets/addPrimaryIcon.png"
-import dropdownIcon from "../assets/dropdownIcon.png"
+import plusIcon from "../assets/addPrimaryIcon.svg"
+import dropdownIcon from "../assets/dropdownIcon.svg"
 import { Button } from "./ui/button"
 
 const FavoritesDropdown = () => {

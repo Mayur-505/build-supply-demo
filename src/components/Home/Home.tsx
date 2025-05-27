@@ -1,7 +1,7 @@
 import { useState } from "react";
-import minus from "../../assets/minus.png";
-import plus from "../../assets/plus.png";
-import productImage from "../../assets/productImage.png";
+import minus from "../../assets/minus.svg";
+import plus from "../../assets/plus.svg";
+import productImage from "../../assets/productImage.svg";
 import FavoritesDropdown from "../FavoritesDropdown";
 import QuoteDropdown from "../QuoteDropdown";
 import { Button } from "../ui/button";

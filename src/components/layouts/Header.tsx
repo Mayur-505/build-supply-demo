@@ -1,10 +1,10 @@
 
 import { cn } from "@/lib/utils";
 import { Link, useLocation } from "react-router";
-import cart from "../../assets/cart.png";
-import Logo from "../../assets/logo.png";
-import search from "../../assets/search.png";
-import star from "../../assets/star.png";
+import cart from "../../assets/cart.svg";
+import Logo from "../../assets/logo.svg";
+import search from "../../assets/search.svg";
+import star from "../../assets/star.svg";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 const Header = () => {
