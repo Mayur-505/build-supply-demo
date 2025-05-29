@@ -13,7 +13,7 @@ const router = createBrowserRouter([
 				element: <HomePage />,
 			},
 			{
-				path: "/quote-detail",
+				path: "/quote-detail/:id",
 				element: <QuoteDetailPage />,
 			}
 		],

@@ -3,18 +3,31 @@ import editIcon from "@/assets/editIcon.svg"
 import fileIcon from "@/assets/file.svg"
 import { QuoteDetailTable } from "../QuoteDetailTable"
 import { Button } from "../ui/button"
+import { useParams } from "react-router"
+import { getQuoteById } from "@/services/quoteService"
+import { useQuery } from "@tanstack/react-query"
+import moment from "moment"
 
 
 const QuoteDetail = () => {
+	const { id } = useParams()
+
+	const { data: quote } = useQuery({
+		queryKey: ["quote", id],
+		queryFn: () => getQuoteById(id!),
+		enabled: !!id
+	});
+	console.log("🚀 ~ QuoteDetail ~ quote:", quote)
+
 	return (
 		<div className="custom-container">
 			<div className="flex justify-between items-start mb-6">
 				<div>
 					<div className="flex items-center gap-2 mb-[23px]">
-						<div className="text-2xl font-bold">East Wing Project (Dec 2024)</div>
+						<div className="text-2xl font-bold">{quote?.quote_name}</div>
 						<div><img src={editIcon} alt="editIcon" /></div>
 					</div>
-					<div className="text-sm font-normal text-secondary">Quote #Q-2024-1293 | Created: Feb 20, 2025 | Last updated: Feb 23, 2025</div>
+					<div className="text-sm font-normal text-secondary">Quote #{quote?.shopify_draft_order_id} | Created: {moment(quote?.created_at).format("MMM DD, YYYY")} | Last updated: {moment(quote?.updated_at).format("MMM DD, YYYY")}</div>
 				</div>
 				<div className="flex items-center gap-4">
 					<Button variant={"outline"} className="bg-white py-[10px] px-[17px] border-[#E3E3E3] rounded-[4px] gap-2"><img src={fileIcon} alt="fileIcon" /> Save as Template</Button>
@@ -68,7 +81,7 @@ const QuoteDetail = () => {
 					<div className='p-4 bg-white'>
 						<div className='mb-4 flex flex-col gap-3'>
 							<div className='text-base font-normal leading-6 flex justify-between items-center'>
-								<span>Subtotal (14 items)</span>
+								<span>Subtotal ({Number(quote?.total_qty)?.toFixed(0) || 0} items)</span>
 								<span>$809.86</span>
 							</div>
 							<div className='text-base font-normal leading-6 flex justify-between items-center'>
@@ -82,7 +95,7 @@ const QuoteDetail = () => {
 						</div>
 						<div className='flex justify-between items-center pt-[17px] text-lg font-bold leading-[27px] border-t border-[#E3E3E3] mb-7'>
 							<span>Estimated Total</span>
-							<span className='text-[#008060]'>$949.64</span>
+							<span className='text-[#008060]'>${Number(quote?.total_amount)?.toFixed(2)}</span>
 						</div>
 						<div>
 							<button className='w-full bg-white h-[42px] mb-4 text-[#008060] cursor-pointer border flex justify-center items-center text-sm font-bold border-[#008060] py-[13px] rounded-[4px]'>Export Quote</button>

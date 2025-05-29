@@ -3,9 +3,17 @@ import { useNavigate } from "react-router"
 import plusIcon from "../assets/addPrimaryIcon.svg"
 import dropdownIcon from "../assets/dropdownIcon.svg"
 import { Button } from "./ui/button"
+import type { IQuote } from "@/lib/types/quote"
 
-const QuoteDropdown = () => {
+interface IProps {
+	quoteList: IQuote[]
+
+}
+
+const QuoteDropdown = ({ quoteList }: IProps) => {
 	const navigate = useNavigate()
+
+	const activeQuote = quoteList && quoteList.filter((quote: IQuote) => quote.is_active === true)
 
 	return (
 		<DropdownMenu>
@@ -16,18 +24,15 @@ const QuoteDropdown = () => {
 				<DropdownMenuLabel className="text-base py-2 px-4 bg-[#F0F0F0]">Recent</DropdownMenuLabel>
 				<DropdownMenuSeparator />
 				<DropdownMenuGroup>
-					<DropdownMenuItem className="px-4 py-2 text-base cursor-pointer" onClick={() => navigate("/quote-detail")}>
-						Cool Project (3 items)
-					</DropdownMenuItem>
-					<DropdownMenuItem className="px-4 py-2 text-base cursor-pointer" onClick={() => navigate("/quote-detail")}>
-						East Wing Project (Dec 2024)
-					</DropdownMenuItem>
-					<DropdownMenuItem className="px-4 py-2 text-base cursor-pointer" onClick={() => navigate("/quote-detail")}>
-						Warehouse Renovation
-					</DropdownMenuItem >
-					<DropdownMenuItem className="px-4 py-2 text-base cursor-pointer" onClick={() => navigate("/quote-detail")}>
-						Highwater Renovation
-					</DropdownMenuItem>
+					<div className="h-[40vh] overflow-y-auto">
+						{activeQuote && activeQuote.length > 0 &&
+							activeQuote.map((quote) => (
+								<DropdownMenuItem className="px-4 py-2 text-base cursor-pointer" onClick={() => navigate(`/quote-detail/${quote.quote_id}`)}>
+									{quote.quote_name}
+								</DropdownMenuItem>
+							))
+						}
+					</div>
 					<DropdownMenuItem className="px-4 py-2 text-base text-primary cursor-pointer" onClick={() => navigate("/quote-detail")}>
 						View All
 					</DropdownMenuItem>

@@ -5,10 +5,18 @@ import productImage from "../../assets/productImage.svg";
 import FavoritesDropdown from "../FavoritesDropdown";
 import QuoteDropdown from "../QuoteDropdown";
 import { Button } from "../ui/button";
+import { useQuery } from "@tanstack/react-query";
+import { getAllQuotes } from "@/services/quoteService";
 
 
 const Home = () => {
 	const [count, setCount] = useState(1);
+
+	const { data: quoteList, isLoading } = useQuery({
+		queryKey: ["quoteList"],
+		queryFn: () => getAllQuotes(),
+	});
+	console.log("🚀 ~ Home ~ quoteList:", quoteList)
 
 	return <div className="custom-container">
 		<div className="text-sm font-normal text-secondary mb-8">Top Level Category  {`>`}  Second Level Category  {`>`}   <span className="font-bold">Heavy-Duty Construction Adhesive (5 Gallon)</span></div>
@@ -43,7 +51,7 @@ const Home = () => {
 				</div>
 				<div className="flex items-center gap-4">
 					<Button className="py-[11px] max-w-[212px] w-full text-white text-base">Add to Cart Button</Button>
-					<QuoteDropdown />
+					<QuoteDropdown quoteList={quoteList || []} />
 					<FavoritesDropdown />
 				</div>
 			</div>
